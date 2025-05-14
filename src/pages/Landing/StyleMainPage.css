@@ -53,7 +53,11 @@
     }
 
     .navbar-right{
-      margin-left: 65%;
+      margin-left: 60%;
+    }
+
+    .navbar{
+      padding: 2%;
     }
   }
 
@@ -73,6 +77,7 @@
   align-items: center ;
   flex-direction: column;
   margin-top: -8%;
+  text-align: center;
 }
 
 .title-main{
@@ -115,6 +120,19 @@
   margin-right: 4%;
 }
 
+@media (max-width: 768px) {
+  .container-sobre{
+    flex-direction: column;
+  }
+
+  .minimal-container{
+    padding: 10%;
+    max-width: 45%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+  }
+}
+
 /* FOOTER */
 
 .container-footer{
@@ -124,12 +142,14 @@
   align-items: center;
   margin-top: 10%;
   padding: 3%;
+  flex-wrap: wrap;
 }
 
 .info-contato{
   color: #FFFFFF;
   margin-left: 15%;
   margin-right: 15%;
+  text-align: center;
 }
 
 .info-redes{
