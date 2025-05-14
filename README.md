@@ -1,6 +1,6 @@
 # 🌐 InfraMapFrontend
 
-Frontend moderno em React com TypeScript para uma aplicação web com autenticação, gerenciamento de pontos e uma landing page intuitiva.
+Frontend moderno em React com TypeScript para uma aplicação web com gerenciamento de pontos, uma landing page intuitiva e autenticação.
 
 📌 **Status:** Em desenvolvimento
 
