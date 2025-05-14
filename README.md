@@ -46,7 +46,7 @@ Frontend moderno em React com TypeScript para uma aplicação web com autentica�
 1. **Clone o repositório:**
 
 ```bash
-git clone https://github.com/seuusuario/InfraMapFrontend.git
+git clone https://github.com/wagnerdaniell/InfraMapFrontend.git
 ```
 
 2. **Acesse o diretório:**
