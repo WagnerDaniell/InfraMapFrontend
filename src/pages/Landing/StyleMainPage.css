@@ -121,6 +121,10 @@
 }
 
 @media (max-width: 768px) {
+  .title-sobre{
+    font-size: 45px;
+  }
+
   .container-sobre{
     flex-direction: column;
   }
