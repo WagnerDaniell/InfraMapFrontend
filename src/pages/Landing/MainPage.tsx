@@ -2,30 +2,19 @@ import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './StyleMainPage.css'
 import '../../styles/Global.css'
-import logo from "../../assets/logoinframap-semf.png"
-import { Link } from 'react-router-dom';
 import networking from "../../assets/networking.png"
 import comunidade from "../../assets/comunidade.png"
 import governo from "../../assets/governo.png"
-import whatsapp from "../../assets/whatsapp.png"
-import instagram from "../../assets/instagram.png"
+import Footer from '../../components/Footer'
+import Navbar from '../../components/Navbar'
 
 function MainPage() {
   
   return (
     <div>
-      {/* NavBar */}
-      <div className='navbar'>
-        <div className='navbar-left'>
-          <img src={logo} alt="logo" height={40} width={40} />
-        </div>
-
-        <div className='navbar-right'>
-          <button className='btSobre'>Sobre</button>
-          <button className='btContato'>Contato</button>
-          <Link to="/home"><button className='btAcesse'>Acesse Já</button></Link>
-        </div>
-      </div>
+      
+      {/* Componente Navbar */}
+      <Navbar showLandingPage={true} showBack={false}/>
 
       {/* MapaMain */}
 
@@ -66,26 +55,8 @@ function MainPage() {
         </div>
       </div>
 
-      {/* Footer */}
-
-      <div className='container-footer'>
-        <img src={logo} alt="logo" height={100}/>
-
-        <div className='info-contato'>
-          <p>Rua Capetinga, Nº 679, Paulista 53429120</p>
-          <p>Telefone - (81)3948294</p>
-          <p>Email - email@gmail.com</p>
-        </div>
-
-        <div className='info-redes'>
-          <p>Redes Sociais</p>
-          <div className='icons-redes'>
-            <img src={instagram} alt="instagram" height={40}/>
-            <img src={whatsapp} alt="whatsapp" height={40} />
-          </div>
-        </div>
-      
-      </div>
+      {/* Componente Footer */}
+      <Footer/>
 
     </div>
   )

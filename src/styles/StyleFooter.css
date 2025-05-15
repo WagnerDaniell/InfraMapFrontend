@@ -1,0 +1,36 @@
+/* FOOTER */
+
+.container-footer{
+  background-color: #1F3B4D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  padding: 3%;
+  flex-wrap: wrap;
+}
+
+.info-contato{
+  color: #FFFFFF;
+  margin-left: 15%;
+  margin-right: 15%;
+  text-align: center;
+}
+
+.info-redes{
+  color: #FFFFFF;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.icons-redes{
+  margin-top: -13px;
+  padding: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
