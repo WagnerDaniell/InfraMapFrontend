@@ -1,6 +1,6 @@
 /* Container Main */
 
-.container-login{
+.container-register{
     display: flex;
     justify-content: center;
     align-items: baseline;
@@ -13,27 +13,27 @@
     align-items: center;
     flex-direction: column;
     max-width: 800px;
-    min-height: 500px;
+    min-height: 530px;
     border-radius: 10px;
 }
 
 /* Mapa */
 
-.title-login{
+.title-register{
     color: #1F3B4D;
     font-size: 45px;
     margin-top: 3%;
     position: absolute;
 }
 
-.img-mapa{
-    margin-top: -14%;
+.img-mapa-register{
+    margin-top: -8%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.img-mapa img {
+.img-mapa-register img {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -45,12 +45,12 @@
     background-color: #FFFFFF;
   }
 
-  .img-mapa{
-    margin-top: -26%;
+  .img-mapa-register{
+    margin-top: -11%;
   }
 
-  .title-login{
-    margin-top: 9%;
+  .title-register{
+    margin-top: 6%;
   }
 
   .container-form{
@@ -58,9 +58,9 @@
     max-width: 100%;
   }
 
-  .img-mapa img{
+  .img-mapa-register img{
     border-radius: 0%;
-    margin-top: 0%;
+    margin-top: -3%;
     max-width: 100%;
     min-height: 100px;
   }
@@ -68,7 +68,7 @@
 
 /* Container Input */
 
-.container-input-login{
+.container-input-register{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,7 +88,7 @@
     margin-right: 10px;
 }
 
-.input-login {
+.input-register {
   position: relative;
   display: block;
   width: 280px;
@@ -96,7 +96,7 @@
 
 }
 
-.input-login input {
+.input-register input {
   width: 82%;
   border: none;
   outline: none;
@@ -107,7 +107,7 @@
   background: transparent;
 }
 
-.input-login input::placeholder {
+.input-register input::placeholder {
   color: #9098A9;
 }
 
@@ -122,7 +122,7 @@
   stroke: #c8ccd4;
 }
 
-.input-login input:focus + .border .border-path {
+.input-register input:focus + .border .border-path {
   stroke: #0077FF;
 }
 
@@ -146,12 +146,12 @@
     justify-content: center;
 }
 
-.button-login{
+.button-register{
     padding: 5%;
     width: 140px;
     border-radius: 20px;
     margin-top: 8%;
-    margin-bottom: 15%;
+    margin-bottom: 12%;
     border: none ;
     color: #FFFFFF;
     background-color: #1F3B4D;
@@ -163,4 +163,5 @@
   font-size: large;
   margin-top: -1%;
 }
+
 
