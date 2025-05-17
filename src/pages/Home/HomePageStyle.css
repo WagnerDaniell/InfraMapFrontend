@@ -1,0 +1,96 @@
+/* Container superior  */
+
+.container-up{
+    display: flex;
+    position: absolute;
+    z-index: 1;
+    align-items: center;
+    margin-left: 10%;
+    margin-top: 2%;
+    gap: 100px;
+}
+
+/* BARRA DE PESQUISA */
+
+.container-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.search-bar{
+    background-color: #1F3B4D;
+    color: #FFFFFF;
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 11px 50px 11px 15px;
+    border-radius: 10px;
+}
+
+.search-bar::placeholder{
+    color: #FFFFFF;
+}
+
+.icon-lupa{
+    position: absolute;
+    margin-left: 70%;
+}
+
+/* Butões superiores direito  */
+
+.container-up-right{
+    display: flex;
+}
+
+.bt-container-up{
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    margin-right: 10%;
+}
+
+.bt-up{
+    background-color: #1F3B4D;
+    color: #FFFFFF;
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 11px 60px;
+    border-radius: 10px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.bt-up:active{
+    opacity: 0.9;
+}
+
+.icon-bt{
+    position: absolute;
+    margin-left: 3%;
+}
+
+
+/* Responsividade Mobile*/
+
+@media (max-width: 768px){
+
+    /* Desativando os botões*/
+    .container-up-right{
+        display: none;
+    }
+
+    /* centralizando a barra de pesquisa*/
+    .container-search{
+        margin-top: 8%;
+        margin-left: 14%;
+        margin-right: -25%;
+    }
+
+    .icon-lupa{
+        margin-right: -7%;
+    }
+    
+}

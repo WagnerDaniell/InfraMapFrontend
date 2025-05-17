@@ -1,0 +1,50 @@
+/* NAVBAR LATERAL DA HOME */
+
+.navbar-lateral{
+    z-index: 1;
+    min-width: 4%;
+    min-height: 100vh;
+    position: absolute;
+    background-color: #1F3B4D;
+}
+
+.navbar-lateral-up{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20%;
+    margin-bottom: 930%;
+}
+
+.navbar-lateral-up-wrapper{
+    gap: 3vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-lateral-down{
+   display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bt-navbar{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.bt-navbar:active{
+    opacity: 0.6;
+}
+
+@media (max-width: 768px){
+
+    /* Desativa a barra lateral*/
+    .navbar-lateral{
+        display: none;
+    }
+}

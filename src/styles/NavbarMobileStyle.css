@@ -1,0 +1,45 @@
+/* NAVBAR Mobile*/
+
+.navbar-mobile{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    max-height: 10%;
+    width: 100%;
+    background-color: #1F3B4D; 
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30%;
+}
+
+.bt-navbar-mobile{
+    display: none;
+    color: #FFFFFF;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin: 4%;
+}
+
+.bt-navbar-mobile:active{
+    opacity: 0.6;
+}
+
+@media (max-width: 768px){
+
+    /* Ativa a navbar mobile */
+    .navbar-mobile{
+        display: flex;
+    }
+
+    .bt-navbar-mobile{
+        display: flex;
+    }
+}

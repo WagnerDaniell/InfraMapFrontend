@@ -1,53 +1,46 @@
-import { useState } from 'react';
-import './StyleHomePage.css';
+import './HomePageStyle.css';
+import '../../styles/Global.css'
+import Mapa from "../../components/Mapa"
+import NavbarMobile from "../../components/NavbarMobile"
+import NavbarLateral from "../../components/NavbarLateral"
+import lupa from '../../assets/lupa.png'
+import mais from '../../assets/mais.png'
+import pasta from '../../assets/pasta.png'
 
 export function HomePage() {
-  const [value, setValue] = useState('');
-
   return (
-    <label className="inp">
-      <input
-        type="password"
-        placeholder="Password"
-        minLength={6}
-        required
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        className={value.length >= 6 ? 'valid' : ''}
-      />
-      <svg
-        className="border"
-        width="280"
-        height="18"
-        viewBox="0 0 280 18"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          className="border-path"
-          d="M0,12 L280,12"
-          stroke="#C8CCD4"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-      </svg>
-      <svg
-        className={`check ${value.length >= 6 ? 'show' : ''}`}
-        width="14"
-        height="12"
-        viewBox="0 0 14 12"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M1 7L5.5 11L13 1"
-          stroke="#0077FF"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </label>
+    <div>
+      
+      <NavbarLateral/>
+
+      <div className='container-up'>
+
+        <div className='container-search'>
+          <input className='search-bar' type="text" placeholder='Faça sua busca...' />
+          <img className='icon-lupa' src={lupa} alt="lupa" width={25}/>
+        </div>
+
+        <div className='container-up-right'>
+          <div className='bt-container-up'>
+            <img className='icon-bt' src={mais} alt="mais" width={25}/>
+            <button className='bt-up'>
+              Criar Points
+            </button>
+          </div>
+
+          <div className='bt-container-up'>
+            <img className='icon-bt' src={pasta} alt="pasta" width={25}/>
+            <button className='bt-up'>
+              Meus Points
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <NavbarMobile/>
+
+      <Mapa/>
+    </div>
   );
 }
 

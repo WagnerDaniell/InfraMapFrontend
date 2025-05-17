@@ -17,7 +17,7 @@ const pontos = [
 
 export default function Mapa() {
   return (
-    <MapContainer center={[-8.0476, -34.8770]} zoom={14} style={{ position: 'relative', height: '100vh', width: '211vh' }}>
+    <MapContainer center={[-8.0476, -34.8770]} zoom={14} style={{height: '100vh', width: '100vw', zIndex:0 }}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       
       {pontos.map(ponto => (

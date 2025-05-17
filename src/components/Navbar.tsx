@@ -1,6 +1,6 @@
 import logo from "../assets/logoinframap-semf.png"
 import {Link} from "react-router-dom"
-import "../styles/StyleNavbar.css"
+import "../styles/NavbarStyle.css"
 
 type NavbarProps = {
   showLandingPage:boolean;

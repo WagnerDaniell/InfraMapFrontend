@@ -1,6 +1,6 @@
 /* Container Main */
 
-.container-register{
+.container-login{
     display: flex;
     justify-content: center;
     align-items: baseline;
@@ -13,27 +13,27 @@
     align-items: center;
     flex-direction: column;
     max-width: 800px;
-    min-height: 530px;
+    min-height: 500px;
     border-radius: 10px;
 }
 
 /* Mapa */
 
-.title-register{
+.title-login{
     color: #1F3B4D;
     font-size: 45px;
     margin-top: 3%;
     position: absolute;
 }
 
-.img-mapa-register{
-    margin-top: -8%;
+.img-mapa{
+    margin-top: -14%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.img-mapa-register img {
+.img-mapa img {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -45,12 +45,12 @@
     background-color: #FFFFFF;
   }
 
-  .img-mapa-register{
-    margin-top: -11%;
+  .img-mapa{
+    margin-top: -26%;
   }
 
-  .title-register{
-    margin-top: 6%;
+  .title-login{
+    margin-top: 9%;
   }
 
   .container-form{
@@ -58,9 +58,8 @@
     max-width: 100%;
   }
 
-  .img-mapa-register img{
-    border-radius: 0%;
-    margin-top: -3%;
+  .img-mapa img{
+    margin-top: -4%;
     max-width: 100%;
     min-height: 100px;
   }
@@ -68,7 +67,7 @@
 
 /* Container Input */
 
-.container-input-register{
+.container-input-login{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,7 +87,7 @@
     margin-right: 10px;
 }
 
-.input-register {
+.input-login {
   position: relative;
   display: block;
   width: 280px;
@@ -96,7 +95,7 @@
 
 }
 
-.input-register input {
+.input-login input {
   width: 82%;
   border: none;
   outline: none;
@@ -107,7 +106,7 @@
   background: transparent;
 }
 
-.input-register input::placeholder {
+.input-login input::placeholder {
   color: #9098A9;
 }
 
@@ -122,7 +121,7 @@
   stroke: #c8ccd4;
 }
 
-.input-register input:focus + .border .border-path {
+.input-login input:focus + .border .border-path {
   stroke: #0077FF;
 }
 
@@ -146,16 +145,20 @@
     justify-content: center;
 }
 
-.button-register{
+.button-login{
     padding: 5%;
     width: 140px;
     border-radius: 20px;
     margin-top: 8%;
-    margin-bottom: 12%;
+    margin-bottom: 15%;
     border: none ;
     color: #FFFFFF;
     background-color: #1F3B4D;
     cursor: pointer;
+}
+
+.button-login:active{
+  opacity: 0.6;
 }
 
 .subtext-register{
@@ -163,5 +166,4 @@
   font-size: large;
   margin-top: -1%;
 }
-
 

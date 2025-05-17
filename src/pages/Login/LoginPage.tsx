@@ -1,4 +1,4 @@
-import './StyleLoginPage.css'
+import './LoginPageStyle.css'
 import '../../styles/Global.css'
 import fotomapa from '../../assets/foto-mapa.png'
 import Footer from "../../components/Footer"
@@ -6,15 +6,17 @@ import email from "../../assets/email.png"
 import senha from "../../assets/senha.png"
 import {useState} from 'react'
 import Navbar from '../../components/Navbar'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const HomePage = () => {
     const [valueEmail, setValueEmail] = useState('');
     const [valueSenha, setValueSenha] = useState('');
     const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valueEmail);
+    const navigate = useNavigate();
 
     const handleLogin = () => {
         //requisição de login
+        navigate('/home')
     }
 
     return(

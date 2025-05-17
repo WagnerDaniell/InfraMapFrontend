@@ -1,6 +1,6 @@
 import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import './StyleMainPage.css'
+import './MainPageStyle.css'
 import '../../styles/Global.css'
 import networking from "../../assets/networking.png"
 import comunidade from "../../assets/comunidade.png"

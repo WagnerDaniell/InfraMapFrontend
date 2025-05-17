@@ -1,4 +1,4 @@
-import './StyleRegisterPage.css'
+import './RegisterPageStyle.css'
 import '../../styles/Global.css'
 import fotomapa from '../../assets/foto-mapa.png'
 import Footer from "../../components/Footer"
