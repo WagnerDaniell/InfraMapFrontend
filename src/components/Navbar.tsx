@@ -16,7 +16,7 @@ const Navbar = ({showLandingPage, showBack} : NavbarProps) => {
 
         <div className='navbar-right'>
           {showLandingPage && <button className='btSobre'>Sobre</button>}
-          {showLandingPage && <button className='btContato'>Contato</button>}
+          {showLandingPage && <Link to="/home"><button className='btContato'>Contato</button></Link>}
           {showLandingPage && <Link to="/login"><button className='btAcesse'>Acesse Já</button></Link>}
 
           {showBack && <Link to="/"><button className='btAcesse'>Voltar</button></Link>}
