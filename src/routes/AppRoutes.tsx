@@ -3,6 +3,7 @@ import LandingPage from '../pages/Landing/MainPage';
 import HomePage from '../pages/Home/HomePage';
 import LoginPage from '../pages/Login/LoginPage';
 import RegisterPage from '../pages/Register/RegisterPage';
+import CreatePointPage from '../pages/CreatePoint/CreatePointPage';
 
 export default function AppRoutes() {
   return (
@@ -12,6 +13,7 @@ export default function AppRoutes() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/createpoint" element={<CreatePointPage />} />
       </Routes>
     </Router>
   );
