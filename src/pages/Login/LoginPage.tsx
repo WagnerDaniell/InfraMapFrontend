@@ -14,8 +14,9 @@ const HomePage = () => {
     const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valueEmail);
     const navigate = useNavigate();
 
-    const handleLogin = () => {
+    const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
         //requisição de login
+        event.preventDefault();
         navigate('/home')
     }
 
