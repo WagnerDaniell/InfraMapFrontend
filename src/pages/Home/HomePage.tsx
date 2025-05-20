@@ -15,9 +15,9 @@ import {Link} from "react-router-dom"
 export function HomePage() {
   const [query, setQuery] = useState('');
   const [position, setPosition] = useState<LatLngTuple | null>([-7.94055, -34.88030]);
+  const [coordinates, setCoordinates] = useState<LatLngTuple | null>(null);
 
   const handleSearch = async () => {
-    console.log("chegueoi")
     const res = await axios.get(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`);
     console.log(res)
     const data = await res.data;
@@ -25,6 +25,7 @@ export function HomePage() {
     if (data && data.length > 0) {
       const { lat, lon } = data[0];
       setPosition([lat, lon]);
+      setCoordinates([lat, lon]);
     }
   };
 
@@ -35,7 +36,7 @@ export function HomePage() {
 
       <div className='container-up'>
 
-        <div className='container-search'>
+        <div className='container-search-wrapper'>
           <input className='search-bar' 
             type="text" 
             placeholder='Faça sua busca...' 
@@ -67,6 +68,11 @@ export function HomePage() {
             </button>
           </div>
         </div>
+      </div>
+
+      <div className={`container-coordinates ${!coordinates ? 'hidden' : ""}`}>
+        <p>Lat: {coordinates?.[0]}</p>
+        <p>Lon: {coordinates?.[1]}</p>
       </div>
 
       <NavbarMobile/>
