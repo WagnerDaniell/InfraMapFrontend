@@ -26,14 +26,14 @@
     position: absolute;
 }
 
-.img-mapa{
+.img-mapa-createpoint{
     margin-top: -14%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.img-mapa img {
+.img-mapa-createpoint img {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -45,8 +45,8 @@
     background-color: #FFFFFF;
   }
 
-  .img-mapa{
-    margin-top: -26%;
+  .img-mapa-createpoint{
+    margin-top: -5%;
   }
 
   .title-createpoint{
@@ -58,7 +58,7 @@
     max-width: 100%;
   }
 
-  .img-mapa img{
+  .img-mapa-createpoint img{
     margin-top: -4%;
     max-width: 100%;
     min-height: 100px;

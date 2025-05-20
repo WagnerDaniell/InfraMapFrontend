@@ -35,7 +35,7 @@ const CreatePointPage = () => {
                 <div className="container-form">
 
                     {/* Mapa */}
-                    <div className='img-mapa'>
+                    <div className='img-mapa-createpoint'>
                         <p className='title-createpoint'>
                             Crie seu Point
                         </p>
