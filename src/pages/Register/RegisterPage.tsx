@@ -189,7 +189,7 @@ const RegisterPage = () => {
                     </form>
                     
                     <div className='subtext-register'>
-                        Já tem uma conta? <Link to="/home"><a href='#'>Clique Aqui</a></Link>
+                        Já tem uma conta? <Link to="/login"><a href='#'>Clique Aqui</a></Link>
                     </div>
                 </div>
             </div>

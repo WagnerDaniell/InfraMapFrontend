@@ -1,0 +1,167 @@
+/* Container Main */
+
+.container-createpoint{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: 9%;
+}
+.container-form{
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 800px;
+    min-height: 500px;
+    border-radius: 10px;
+}
+
+/* Mapa */
+
+.title-createpoint{
+    color: #1F3B4D;
+    font-size: 45px;
+    margin-top: 3%;
+    position: absolute;
+}
+
+.img-mapa{
+    margin-top: -14%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-mapa img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Responsividade */
+
+@media(max-width: 768px){
+  body{
+    background-color: #FFFFFF;
+  }
+
+  .img-mapa{
+    margin-top: -26%;
+  }
+
+  .title-createpoint{
+    margin-top: 9%;
+  }
+
+  .container-form{
+    margin-bottom: 10%;
+    max-width: 100%;
+  }
+
+  .img-mapa img{
+    margin-top: -4%;
+    max-width: 100%;
+    min-height: 100px;
+  }
+}
+
+/* Container Input */
+
+.container-input-createpoint{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 19%;
+}
+
+.input-createpoint {
+  position: relative;
+  display: block;
+  width: 280px;
+  margin: 15px auto;
+
+}
+
+.input-createpoint input {
+  width: 82%;
+  border: none;
+  outline: none;
+  padding: 12px 40px 12px 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #223254;
+  background: transparent;
+}
+
+.input-createpoint input::placeholder {
+  color: #9098A9;
+}
+
+.border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.border-path {
+  transition: stroke 0.2s ease;
+  stroke: #c8ccd4;
+}
+
+.input-createpoint input:focus + .border .border-path {
+  stroke: #0077FF;
+}
+
+.check {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  transition: transform 0.3s cubic-bezier(0.5, 0.9, 0.25, 1.3) 0.15s;
+  pointer-events: none;
+}
+
+.check.show {
+  transform: translateY(-50%) scale(1);
+}
+
+/* Button */
+
+.container-button{
+    display: flex;
+    justify-content: center;
+}
+
+.button-createpoint{
+    padding: 5%;
+    width: 140px;
+    border-radius: 20px;
+    margin-top: 8%;
+    margin-bottom: 15%;
+    border: none ;
+    color: #FFFFFF;
+    background-color: #1F3B4D;
+    cursor: pointer;
+}
+
+.button-createpoint:active{
+  opacity: 0.6;
+}
+
+.subtext-register{
+  display: flex;
+  font-size: large;
+  margin-top: -1%;
+}
+
+.input-file-createpoint{
+    margin-top: 4%;
+    color: #9098A9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    
+}
+

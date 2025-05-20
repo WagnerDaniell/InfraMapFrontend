@@ -1,5 +1,5 @@
 import logo from "../assets/logoinframap-semf.png"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import "../styles/NavbarStyle.css"
 
 type NavbarProps = {
@@ -8,21 +8,24 @@ type NavbarProps = {
 };
 
 const Navbar = ({showLandingPage, showBack} : NavbarProps) => {
-    return(
-        <div className='navbar'>
-        <div className='navbar-left'>
-          <Link to="/"><img src={logo} alt="logo" height={40} width={40} /></Link>
-        </div>
 
-        <div className='navbar-right'>
-          {showLandingPage && <button className='btSobre'>Sobre</button>}
-          {showLandingPage && <button className='btContato'>Contato</button>}
-          {showLandingPage && <Link to="/login"><button className='btAcesse'>Acesse Já</button></Link>}
+  const navigate = useNavigate();
 
-          {showBack && <Link to="/"><button className='btAcesse'>Voltar</button></Link>}
-        </div>
+  return(
+      <div className='navbar'>
+      <div className='navbar-left'>
+        <Link to="/"><img src={logo} alt="logo" height={40} width={40} /></Link>
       </div>
-    )
+
+      <div className='navbar-right'>
+        {showLandingPage && <button className='btSobre'>Sobre</button>}
+        {showLandingPage && <button className='btContato'>Contato</button>}
+        {showLandingPage && <Link to="/login"><button className='btAcesse'>Acesse Já</button></Link>}
+
+        {showBack && <button className='btAcesse' onClick={() => navigate(-1)}>Voltar</button>}
+      </div>
+    </div>
+  )
 }
 
 export default Navbar

@@ -9,6 +9,7 @@ import pasta from '../../assets/pasta.png'
 import { useState } from 'react';
 import type { LatLngTuple } from 'leaflet';
 import axios from 'axios';
+import {Link} from "react-router-dom"
 
 
 export function HomePage() {
@@ -54,9 +55,9 @@ export function HomePage() {
         <div className='container-up-right'>
           <div className='bt-container-up'>
             <img className='icon-bt' src={mais} alt="mais" width={25}/>
-            <button className='bt-up'>
+            <Link to="/criarpoint"><button className='bt-up'> 
               Criar Points
-            </button>
+            </button></Link>
           </div>
 
           <div className='bt-container-up'>

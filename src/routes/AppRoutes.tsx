@@ -13,7 +13,7 @@ export default function AppRoutes() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/createpoint" element={<CreatePointPage />} />
+        <Route path="/criarpoint" element={<CreatePointPage />} />
       </Routes>
     </Router>
   );
