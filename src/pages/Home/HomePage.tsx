@@ -9,13 +9,14 @@ import pasta from '../../assets/pasta.png'
 import { useState } from 'react';
 import type { LatLngTuple } from 'leaflet';
 import axios from 'axios';
-import {Link} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
 
 export function HomePage() {
   const [query, setQuery] = useState('');
   const [position, setPosition] = useState<LatLngTuple | null>([-7.94055, -34.88030]);
   const [coordinates, setCoordinates] = useState<LatLngTuple | null>(null);
+  const navigate = useNavigate();
 
   const handleSearch = async () => {
     const res = await axios.get(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`);
@@ -46,6 +47,7 @@ export function HomePage() {
               e => {
                 if (e.key == 'Enter'){
                   handleSearch();
+                  e.currentTarget.blur();
                 };
               }
             }
@@ -56,9 +58,19 @@ export function HomePage() {
         <div className='container-up-right'>
           <div className='bt-container-up'>
             <img className='icon-bt' src={mais} alt="mais" width={25}/>
-            <Link to="/criarpoint"><button className='bt-up'> 
+            <button className='bt-up' onClick={() => { 
+              if(coordinates != null)
+                {
+                  navigate("/criarpoint", {state:
+                    {
+                      lat: coordinates[0],
+                      lon: coordinates[1]
+                    }})
+                }else{
+                    navigate("/criarpoint")                    
+                }}}> 
               Criar Points
-            </button></Link>
+            </button>
           </div>
 
           <div className='bt-container-up'>
@@ -70,12 +82,12 @@ export function HomePage() {
         </div>
       </div>
 
-      <div className={`container-coordinates ${!coordinates ? 'hidden' : ""}`}>
+      <div title="Ao clicar no botão 'Criar Points', essas coordenadas já estarão inseridas no campo Latitude e Longitude." className={`container-coordinates ${!coordinates ? 'hidden' : ""}`}>
         <p>Lat: {coordinates?.[0]}</p>
         <p>Lon: {coordinates?.[1]}</p>
       </div>
 
-      <NavbarMobile/>
+      <NavbarMobile coordinates={coordinates}/>
 
       {position && <Mapa busca={position} />}
 

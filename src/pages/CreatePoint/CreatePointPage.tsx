@@ -3,13 +3,17 @@ import fotomapa from '../../assets/foto-mapa.png'
 import Footer from "../../components/Footer"
 import {useState} from 'react'
 import Navbar from '../../components/Navbar'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const CreatePointPage = () => {
+    const location = useLocation();
+    console.log('State recebido:', location.state);
+    const lat = location.state?.lat ?? '';
+    const lon = location.state?.lon ?? '';
     const [valueNome, setValueNome] = useState('');
     const [valueDescription, setValueDescription] = useState('');
-    const [valueLatitude, setValueLatitude] = useState('');
-    const [valueLongitude, setValueLongitude] = useState('');
+    const [valueLatitude, setValueLatitude] = useState(lat);
+    const [valueLongitude, setValueLongitude] = useState(lon);
     const [valueImage, setValueImage] = useState<File | null>(null);
     const navigate = useNavigate();
 
@@ -45,6 +49,7 @@ const CreatePointPage = () => {
                     {/* Form */}
 
                     <form onSubmit={handlecreatepoint}>
+                        <span className={`tooltip-text ${!lat ? 'hidden' : ""}`}>ℹ️ Essas coordenadas são da sua última busca.</span>
                         <div className='container-input-createpoint'>
 
                             {/* Input Name + SVG */}
@@ -135,52 +140,6 @@ const CreatePointPage = () => {
                                 </svg>
                             </label>
 
-
-                            {/* Input Longitude + SVG */}
-                            <label className="input-createpoint">
-                                <input
-                                    type="text"
-                                    placeholder="Longitude"
-                                    minLength={5}
-                                    required
-                                    value={valueLongitude}
-                                    onChange={(e) => setValueLongitude(e.target.value)}
-                                />
-                                <svg
-                                    className="border"
-                                    width="280"
-                                    height="18"
-                                    viewBox="0 0 280 18"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                    className="border-path"
-                                    d="M0,12 L280,12"
-                                    stroke="#C8CCD4"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    />
-                                </svg>
-                                <svg
-                                    className={`check ${valueLongitude.length >= 5 ? 'show' : ''}`}
-                                    width="14"
-                                    height="12"
-                                    viewBox="0 0 14 12"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                    d="M1 7L5.5 11L13 1"
-                                    stroke="#0077FF"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    />
-                                </svg>
-                            </label>
-
-
                             {/* Input Latitude + SVG */}
                             <label className="input-createpoint">
                                 <input
@@ -225,6 +184,49 @@ const CreatePointPage = () => {
                                 </svg>
                             </label>
 
+                            {/* Input Longitude + SVG */}
+                            <label className="input-createpoint">
+                                <input
+                                    type="text"
+                                    placeholder="Longitude"
+                                    minLength={5}
+                                    required
+                                    value={valueLongitude}
+                                    onChange={(e) => setValueLongitude(e.target.value)}
+                                />
+                                <svg
+                                    className="border"
+                                    width="280"
+                                    height="18"
+                                    viewBox="0 0 280 18"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                    className="border-path"
+                                    d="M0,12 L280,12"
+                                    stroke="#C8CCD4"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    />
+                                </svg>
+                                <svg
+                                    className={`check ${valueLongitude.length >= 5 ? 'show' : ''}`}
+                                    width="14"
+                                    height="12"
+                                    viewBox="0 0 14 12"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                    d="M1 7L5.5 11L13 1"
+                                    stroke="#0077FF"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    />
+                                </svg>
+                            </label>
 
                             <label className="input-file-createpoint">
                                 Selecione uma imagem do local:

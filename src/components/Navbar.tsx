@@ -1,6 +1,7 @@
 import logo from "../assets/logoinframap-semf.png"
 import {Link, useNavigate} from "react-router-dom"
 import "../styles/NavbarStyle.css"
+import voltar from "../assets/botao-voltar.png"
 
 type NavbarProps = {
   showLandingPage:boolean;
@@ -22,7 +23,7 @@ const Navbar = ({showLandingPage, showBack} : NavbarProps) => {
         {showLandingPage && <button className='btContato'>Contato</button>}
         {showLandingPage && <Link to="/login"><button className='btAcesse'>Acesse Já</button></Link>}
 
-        {showBack && <button className='btAcesse' onClick={() => navigate(-1)}>Voltar</button>}
+        {showBack && <button className='btBack' onClick={() => navigate(-1)}><img src={voltar} alt="voltar" width={35}/></button>}
       </div>
     </div>
   )
