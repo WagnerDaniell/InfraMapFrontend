@@ -1,0 +1,62 @@
+.container-mypoints{
+    display: flex;
+    flex-direction: column;
+    background-color: #1F3B4D;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    border-radius: 10px;
+}
+
+.titlemypoints-wrapper{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 3%;
+    padding: 1%;
+    font-size: large;
+    color: #FFFFFF;
+    gap: 10px;
+}
+
+.mypoints-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    border-radius: 10px;
+    color: #FFFFFF;
+    background-color: #ffcb03;
+}
+
+.mypoints-wrapper-left{
+    margin-left: 2%;
+}
+
+.mypoints-wrapper-right{
+    display: flex;
+    margin-left: 60%;
+    margin-right: 2%;
+}
+
+.btn-wrapper-right{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+@media (max-width: 768px){
+    .mypoints-wrapper-right{
+        margin-left: 5%;
+        padding: 0%;
+    }
+    .mypoints-wrapper{
+        margin-left: 4%;
+        margin-right: 4%;
+        margin-bottom: 4%;
+    }
+}

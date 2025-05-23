@@ -75,7 +75,8 @@ export function HomePage() {
 
           <div className='bt-container-up'>
             <img className='icon-bt' src={pasta} alt="pasta" width={25}/>
-            <button className='bt-up'>
+            <button className='bt-up' 
+            onClick={() => navigate("/meuspoints")}>
               Meus Points
             </button>
           </div>
