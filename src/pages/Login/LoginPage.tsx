@@ -31,7 +31,7 @@ const HomePage = () => {
             setIsLoading(true)
             
             const response = await axios.post("https://inframap-back-end-3zs0.onrender.com/users/login", body)
-            localStorage.setItem("tokenId", response.data.userId)
+            localStorage.setItem("token", response.data.token)
             navigate('/home')
             toast.success("Login efetuado com sucesso");
         }catch(error){

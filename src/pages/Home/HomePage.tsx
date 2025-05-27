@@ -10,23 +10,26 @@ import { useState } from 'react';
 import type { LatLngTuple } from 'leaflet';
 import axios from 'axios';
 import {useNavigate} from "react-router-dom"
+import { toast } from 'react-toastify';
+import { MdError } from 'react-icons/md';
 
-
-export function HomePage() {
+const HomePage = () => {
   const [query, setQuery] = useState('');
-  const [position, setPosition] = useState<LatLngTuple | null>([-7.94055, -34.88030]);
-  const [coordinates, setCoordinates] = useState<LatLngTuple | null>(null);
+  const [position, setPosition] = useState<LatLngTuple | null>([-7.94055, -34.88030]); // usado para enviar para ChangeView
+  const [coordinates, setCoordinates] = useState<LatLngTuple | null>(null); //Usado para a div se for null a div não aparece
   const navigate = useNavigate();
 
+  //Requisição de Busca na OpenStreet
   const handleSearch = async () => {
-    const res = await axios.get(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`);
-    console.log(res)
-    const data = await res.data;
-    console.log(data)
-    if (data && data.length > 0) {
-      const { lat, lon } = data[0];
+    try{
+      const res = await axios.get(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`);
+      console.log(res)
+      const { lat, lon } = res.data[0];
       setPosition([lat, lon]);
       setCoordinates([lat, lon]);
+      
+    }catch(error){
+      toast.error("Localização não encontrada!", { icon: <MdError color="#1F3B4D" size={26} />})
     }
   };
 

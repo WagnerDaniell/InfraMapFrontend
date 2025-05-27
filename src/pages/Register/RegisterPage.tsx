@@ -34,8 +34,9 @@ const RegisterPage = () => {
         try{
             setIsLoading(true)
             const response = await axios.post("https://inframap-back-end-3zs0.onrender.com/users/register", body)
+            localStorage.setItem("token", response.data.token)
             toast.success(response.data.message)
-            navigate("/login")
+            navigate("/home")
         }catch(error){
             setIsLoading(false)
             if(axios.isAxiosError(error)){

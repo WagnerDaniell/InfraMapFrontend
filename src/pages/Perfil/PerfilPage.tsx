@@ -15,7 +15,7 @@ const PerfilPage = () => {
     const navigate = useNavigate()
 
     const handlelogout = () => {
-        localStorage.removeItem("tokenId")
+        localStorage.removeItem("token")
         toast.error("Você foi desconectado.", {icon: <MdError color="#1F3B4D" size={26} />})
         navigate("/")
     }
