@@ -24,7 +24,7 @@ const NavbarMobile = ({coordinates}:NavbarMobileProps) => {
                 }else{
                     navigate("/criarpoint")                    
                 }}}><img src={mais} alt="mais" width={25} />Criar Point</button>
-            <button className="bt-navbar-mobile"><img src={perfil} alt="perfil" width={25} />Perfil</button>
+            <button className="bt-navbar-mobile" onClick={() => navigate("/perfil")}><img src={perfil} alt="perfil" width={25} />Perfil</button>
         </div>
     )
 }

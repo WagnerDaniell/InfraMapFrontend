@@ -23,13 +23,6 @@
     flex-direction: column;
 }
 
-.navbar-lateral-down{
-   display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 .bt-navbar{
     background-color: transparent;
     outline: none;

@@ -5,6 +5,7 @@ import LoginPage from '../pages/Login/LoginPage';
 import RegisterPage from '../pages/Register/RegisterPage';
 import CreatePointPage from '../pages/CreatePoint/CreatePointPage';
 import MyPointsPage from "../pages/MyPoints/MyPointsPage"
+import PerfilPage from '../pages/Perfil/PerfilPage';
 
 export default function AppRoutes() {
   return (
@@ -16,6 +17,7 @@ export default function AppRoutes() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/criarpoint" element={<CreatePointPage />} />
         <Route path="/meuspoints" element={<MyPointsPage />} />
+        <Route path="/perfil" element={<PerfilPage />} />
       </Routes>
     </Router>
   );

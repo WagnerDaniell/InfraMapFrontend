@@ -7,20 +7,49 @@ import senha from "../../assets/senha.png"
 import name from "../../assets/nameicon.png"
 import {useState} from 'react'
 import Navbar from '../../components/Navbar'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
+import axios from 'axios'
+import { toast } from 'react-toastify'
+import { MdError } from 'react-icons/md'
+import Loading from '../../components/Loading'
 
 const RegisterPage = () => {
     const [valueName, setValueName] = useState('');
     const [valueEmail, setValueEmail] = useState('');
     const [valueSenha, setValueSenha] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+
     const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valueEmail);
 
-    const handleRegister = () => {
-        //requisição de register
+    const navigate = useNavigate();
+
+    const body = {
+        name: valueName,
+        email: valueEmail,
+        password: valueSenha
+    }
+
+    const handleRegister = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        try{
+            setIsLoading(true)
+            const response = await axios.post("https://inframap-back-end-3zs0.onrender.com/users/register", body)
+            toast.success(response.data.message)
+            navigate("/login")
+        }catch(error){
+            setIsLoading(false)
+            if(axios.isAxiosError(error)){
+               toast.error(error.response?.data.message, {icon: <MdError color="#1F3B4D" size={24} />});
+            }else{
+                toast.error("Erro ao se registrar");
+            }
+        }
     }
 
     return(
         <div>
+            {isLoading && <Loading/>}
+
             {/* Componente Navbar */}
             <Navbar showLandingPage={false} showBack={true} />
             
@@ -189,7 +218,7 @@ const RegisterPage = () => {
                     </form>
                     
                     <div className='subtext-register'>
-                        Já tem uma conta? <Link to="/login"><a href='#'>Clique Aqui</a></Link>
+                        Já tem uma conta? <Link to="/login">Clique Aqui</Link>
                     </div>
                 </div>
             </div>

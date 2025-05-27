@@ -7,21 +7,49 @@ import senha from "../../assets/senha.png"
 import {useState} from 'react'
 import Navbar from '../../components/Navbar'
 import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { toast } from 'react-toastify';
+import { MdError } from 'react-icons/md';
+import Loading from '../../components/Loading'
 
 const HomePage = () => {
     const [valueEmail, setValueEmail] = useState('');
     const [valueSenha, setValueSenha] = useState('');
     const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valueEmail);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
-    const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
-        //requisição de login
+    const body = {
+        email: valueEmail,
+        password: valueSenha
+    }
+
+    const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        navigate('/home')
+
+        try{
+            setIsLoading(true)
+            
+            const response = await axios.post("https://inframap-back-end-3zs0.onrender.com/users/login", body)
+            localStorage.setItem("tokenId", response.data.userId)
+            navigate('/home')
+            toast.success("Login efetuado com sucesso");
+        }catch(error){
+            setIsLoading(false)
+            if (axios.isAxiosError(error)){
+                const erroMsg = error.response?.data.message
+                toast.error(erroMsg, {icon: <MdError color="#1F3B4D" size={24} />});
+            }else{
+                toast.error("Erro ao fazer login.", {icon: <MdError color="#1F3B4D" size={26} />});
+            }
+        }
     }
 
     return(
         <div>
+
+            {isLoading && <Loading/>}
+
             {/* Componente Navbar */}
             <Navbar showLandingPage={false} showBack={true} />
             
@@ -143,7 +171,7 @@ const HomePage = () => {
                     </form>
 
                     <div className='subtext-login'>
-                        Ainda não tem conta? <Link to="/register"><a href='#'>Clique Aqui</a></Link>
+                        Ainda não tem conta? <Link to="/register">Clique Aqui</Link>
                     </div>
                 </div>
             </div>

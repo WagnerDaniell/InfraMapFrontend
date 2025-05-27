@@ -5,3 +5,16 @@ body{
   background-color: #F4F4F4;
 
 }
+
+
+/* Personalização da Notify da lib: React-toastify*/
+
+
+.Toastify__toast--error {
+  background: #ffffff !important; 
+  color: #1F3B4D !important;
+}
+
+.Toastify__progress-bar--error {
+  background: #1F3B4D !important; 
+}
