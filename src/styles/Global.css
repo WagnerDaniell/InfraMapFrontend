@@ -10,11 +10,11 @@ body{
 /* Personalização da Notify da lib: React-toastify*/
 
 
-.Toastify__toast--error {
+.Toastify__toast--error, .Toastify__toast--info {
   background: #ffffff !important; 
   color: #1F3B4D !important;
 }
 
-.Toastify__progress-bar--error {
+.Toastify__progress-bar--error, .Toastify__progress-bar--info {
   background: #1F3B4D !important; 
 }

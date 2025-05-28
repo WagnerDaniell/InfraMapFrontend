@@ -4,12 +4,17 @@ import Footer from "../../components/Footer"
 import {useState} from 'react'
 import Navbar from '../../components/Navbar'
 import { useLocation, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { toast } from 'react-toastify'
+import { MdError } from 'react-icons/md'
 
 const CreatePointPage = () => {
+    //Passando as coordenadas por state
     const location = useLocation();
-    console.log('State recebido:', location.state);
     const lat = location.state?.lat ?? '';
     const lon = location.state?.lon ?? '';
+
+
     const [valueNome, setValueNome] = useState('');
     const [valueDescription, setValueDescription] = useState('');
     const [valueLatitude, setValueLatitude] = useState(lat);
@@ -17,17 +22,37 @@ const CreatePointPage = () => {
     const [valueImage, setValueImage] = useState<File | null>(null);
     const navigate = useNavigate();
 
-    const handlecreatepoint = (event: React.FormEvent<HTMLFormElement>) => {
+    const handlecreatepoint = async(event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const body = {
-            name: valueNome,
-            description: valueDescription,
-            latitude: valueLatitude,
-            longitude: valueLongitude,
-            image: valueImage
+
+        const formData = new FormData();
+        formData.append('name', valueNome);
+        formData.append('description', valueDescription);
+        formData.append('latitude', valueLatitude);
+        formData.append('longitude', valueLongitude);
+
+        if (valueImage) {
+            formData.append('image', valueImage);
         }
-        console.log(body);
-        navigate('/home');
+
+        try {
+            const token = localStorage.getItem("token")
+            await axios.post("https://inframap-back-end-3zs0.onrender.com/points/createpoint", formData, {
+                headers: {
+                    'Authorization' : `Bearer ${token}`,
+                    'Content-Type' : 'multipart/form-data'
+                }
+            });
+            navigate("/home", { state : {lat: valueLatitude, lon: valueLongitude}})   
+        }catch (error) {
+            if (axios.isAxiosError(error)){
+                console.log(error)
+                const erroMsg = error.response?.data.error
+                toast.error(erroMsg, {icon: <MdError color="#1F3B4D" size={24} />});
+            }else{
+                toast.error("Erro ao fazer login.", {icon: <MdError color="#1F3B4D" size={26} />});
+            }
+        }
     }
 
     return(
@@ -235,9 +260,8 @@ const CreatePointPage = () => {
                                     accept="image/*" // opcional: só permite imagens
                                     required
                                     onChange={(e) => {
-                                        if (e.target.files && e.target.files[0]) {
-                                            setValueImage(e.target.files[0]);
-                                        }
+                                        const file = e.target.files?.[0];
+                                        if (file) setValueImage(file);
                                     }}
                                 />
                             </label>

@@ -6,18 +6,29 @@ import NavbarLateral from "../../components/NavbarLateral"
 import lupa from '../../assets/lupa.png'
 import mais from '../../assets/mais.png'
 import pasta from '../../assets/pasta.png'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { LatLngTuple } from 'leaflet';
 import axios from 'axios';
-import {useNavigate} from "react-router-dom"
+import {useLocation, useNavigate} from "react-router-dom"
 import { toast } from 'react-toastify';
 import { MdError } from 'react-icons/md';
 
 const HomePage = () => {
   const [query, setQuery] = useState('');
-  const [position, setPosition] = useState<LatLngTuple | null>([-7.94055, -34.88030]); // usado para enviar para ChangeView
+  const [position, setPosition] = useState<LatLngTuple | null>([-7.94055, -34.88030]); // Usado para enviar para ChangeView
   const [coordinates, setCoordinates] = useState<LatLngTuple | null>(null); //Usado para a div se for null a div não aparece
   const navigate = useNavigate();
+  const location = useLocation();
+
+  //para quando voltar da /criarpont ir para o local criado
+  useEffect(() => {
+    const lat = location.state?.lat ?? null;
+    const lon = location.state?.lon ?? null;
+
+    if (lat != null || lon != null){
+      setPosition([lat, lon])
+    }
+  }, [])
 
   //Requisição de Busca na OpenStreet
   const handleSearch = async () => {

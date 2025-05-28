@@ -10,15 +10,31 @@ import { toast } from "react-toastify"
 import { MdError } from "react-icons/md"
 import { useNavigate} from 'react-router-dom'
 import { MapContainer, TileLayer } from 'react-leaflet';
+import { useEffect, useState } from 'react'
+import { jwtDecode } from 'jwt-decode'
+
+interface MyToken {
+    userId : string
+    name : string
+}
 
 const PerfilPage = () => {
     const navigate = useNavigate()
+    const [nameUser, setNameUser] = useState("Seja bem-vindo!")
 
     const handlelogout = () => {
         localStorage.removeItem("token")
         toast.error("Você foi desconectado.", {icon: <MdError color="#1F3B4D" size={26} />})
         navigate("/")
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        if(token){
+            const decodetoken = jwtDecode<MyToken>(token)
+            setNameUser(decodetoken.name)
+        }
+    }, [])
 
     return(
         <div>
@@ -31,7 +47,7 @@ const PerfilPage = () => {
             <div className="container-perfil">
                 <img className="icon-perfil" src={perfil} alt="perfil" />
 
-                <p className="nameuser-perfil">Olá, Wagner Daniel</p>
+                <p className="nameuser-perfil">Olá, {nameUser}</p>
 
                 <div className='btn-perfil-wrapper'>
                     <img src={menu} alt="menu"  width={30} className='btn-icon-perfil'/>
