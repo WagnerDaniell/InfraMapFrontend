@@ -92,7 +92,7 @@ const HomePage = () => {
         <p>Lon: {coordinates?.[1]}</p>
       </div>
 
-      <NavbarMobile coordinates={coordinates}/>
+      <NavbarMobile/>
 
       {position && <Mapa busca={position} />}
 
