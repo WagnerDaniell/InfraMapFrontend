@@ -2,8 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import type { Icon, LatLngTuple } from 'leaflet';
-import ChangeView from './Map/Changeview';
-import DbClickHandler from './Map/dblclick'
+import ChangeView from './Changeview';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -27,13 +26,6 @@ type point = {
 const Mapa = ({ busca }: { busca: LatLngTuple }) => {
   const [points, setPoints] = useState<point[]>([]);
   const navigate = useNavigate();
-
-  //recebe a cordenada e lança o toast
-  const handleDbClick = (coords: LatLngTuple) => {
-    const textCopy = `Lat: ${coords[0].toFixed(5)}, Lon: ${coords[1].toFixed(5)}`
-    navigator.clipboard.writeText(textCopy)
-    toast.info(`Coordenadas copiadas para a área de transferência:\n${textCopy}`, {icon: <MdError color="#1F3B4D" size={26} />});
-  };
 
   useEffect(() => {
     const buscarPoints = async () => {
@@ -61,7 +53,6 @@ const Mapa = ({ busca }: { busca: LatLngTuple }) => {
     <MapContainer center={busca} zoom={14} style={{ height: '100vh', width: '100vw', zIndex: 0 }}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <ChangeView center={busca} />
-      <DbClickHandler onDbClick={handleDbClick} />
 
       {points.map((point) => (
         <Marker

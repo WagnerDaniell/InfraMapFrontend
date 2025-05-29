@@ -1,7 +1,7 @@
 import './PerfilStyle.css'
 import '../../styles/Global.css'
-import Navbar from "../../components/Navbar"
-import Footer from "../../components/Footer"
+import Navbar from "../../components/Navbar/Navbar"
+import Footer from "../../components/Footer/Footer"
 import perfil from "../../assets/perfilazul.png"
 import menu from '../../assets/menu.png'
 import logout from "../../assets/logout.png"

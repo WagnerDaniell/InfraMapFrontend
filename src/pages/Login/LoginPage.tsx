@@ -1,16 +1,16 @@
 import './LoginPageStyle.css'
 import '../../styles/Global.css'
 import fotomapa from '../../assets/foto-mapa.png'
-import Footer from "../../components/Footer"
+import Footer from "../../components/Footer/Footer"
 import email from "../../assets/email.png"
 import senha from "../../assets/senha.png"
 import {useState} from 'react'
-import Navbar from '../../components/Navbar'
+import Navbar from '../../components/Navbar/Navbar'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify';
 import { MdError } from 'react-icons/md';
-import Loading from '../../components/Loading'
+import Loading from '../../components/Loading/Loading'
 
 const HomePage = () => {
     const [valueEmail, setValueEmail] = useState('');

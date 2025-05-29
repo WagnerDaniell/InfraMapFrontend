@@ -1,7 +1,7 @@
-import logo from "../assets/logoinframap-semf.png"
-import whatsapp from "../assets/whatsapp.png"
-import instagram from "../assets/instagram.png"
-import '../styles/FooterStyle.css'
+import logo from "../../assets/logoinframap-semf.png"
+import whatsapp from "../../assets/whatsapp.png"
+import instagram from "../../assets/instagram.png"
+import './FooterStyle.css'
 
 const Footer = () => {
     return(

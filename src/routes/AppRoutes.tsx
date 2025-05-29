@@ -7,6 +7,8 @@ import CreatePointPage from '../pages/CreatePoint/CreatePointPage';
 import MyPointsPage from "../pages/MyPoints/MyPointsPage"
 import PerfilPage from '../pages/Perfil/PerfilPage';
 import ProtectedRoute from "../components/ProtectedRoute"
+import PointLocation from '../pages/CreatePoint/PointLocation'
+import EditPoint from '../pages/EditPoint/EditPoint'
 
 export default function AppRoutes() {
   return (
@@ -19,6 +21,8 @@ export default function AppRoutes() {
         <Route path="/criarpoint" element={<ProtectedRoute><CreatePointPage /></ProtectedRoute>} />
         <Route path="/meuspoints" element={<ProtectedRoute><MyPointsPage /></ProtectedRoute>} />
         <Route path="/perfil" element={<ProtectedRoute><PerfilPage /></ProtectedRoute>} />
+        <Route path="/localpoint" element={<ProtectedRoute><PointLocation /></ProtectedRoute>} />
+        <Route path="/editarpoint" element={<ProtectedRoute><EditPoint /></ProtectedRoute>} />
       </Routes>
     </Router>
   );

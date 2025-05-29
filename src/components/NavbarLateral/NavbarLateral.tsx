@@ -1,7 +1,6 @@
-import "../styles/NavbarLateralStyle.css"
-import "../styles/Global.css"
-import perfil from "../assets/perfil.png"
-import menu from '../assets/menu.png'
+import "./NavbarLateralStyle.css"
+import perfil from "../../assets/perfil.png"
+import menu from '../../assets/menu.png'
 import { useNavigate } from "react-router-dom"
 
 const NavbarLateral = () => {

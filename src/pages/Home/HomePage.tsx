@@ -1,8 +1,8 @@
 import './HomePageStyle.css';
 import '../../styles/Global.css'
-import Mapa from "../../components/Mapa"
-import NavbarMobile from "../../components/NavbarMobile"
-import NavbarLateral from "../../components/NavbarLateral"
+import Mapa from "../../components/Map/Mapa"
+import NavbarMobile from "../../components/NavbarMobile/NavbarMobile"
+import NavbarLateral from "../../components/NavbarLateral/NavbarLateral"
 import lupa from '../../assets/lupa.png'
 import mais from '../../assets/mais.png'
 import pasta from '../../assets/pasta.png'
@@ -72,17 +72,7 @@ const HomePage = () => {
         <div className='container-up-right'>
           <div className='bt-container-up'>
             <img className='icon-bt' src={mais} alt="mais" width={25}/>
-            <button className='bt-up' onClick={() => { 
-              if(coordinates != null)
-                {
-                  navigate("/criarpoint", {state:
-                    {
-                      lat: coordinates[0],
-                      lon: coordinates[1]
-                    }})
-                }else{
-                    navigate("/criarpoint")                    
-                }}}> 
+            <button className='bt-up' onClick={() => {navigate("/localpoint")}}>
               Criar Points
             </button>
           </div>

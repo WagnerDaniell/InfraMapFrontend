@@ -1,4 +1,4 @@
-import '../styles/LoadingStyle.css';
+import './LoadingStyle.css';
 
 const Loading = () => {
   return (

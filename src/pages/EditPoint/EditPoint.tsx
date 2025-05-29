@@ -1,4 +1,4 @@
-import './CreatePointStyle.css'
+import './EditPointStyle.css'
 import fotomapa from '../../assets/foto-mapa.png'
 import Footer from "../../components/Footer/Footer"
 import {useState} from 'react'
@@ -8,28 +8,21 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import { MdError } from 'react-icons/md'
 
-const CreatePointPage = () => {
-    //Pegando as coordenadas por state
-    const location = useLocation();
-    const lat = location.state?.lat ?? '';
-    const lon = location.state?.lon ?? '';
-
+const EditarPointPage = () => {
 
     const [valueNome, setValueNome] = useState('');
     const [valueDescription, setValueDescription] = useState('');
-    const [valueLatitude, setValueLatitude] = useState(lat);
-    const [valueLongitude, setValueLongitude] = useState(lon);
     const [valueImage, setValueImage] = useState<File | null>(null);
     const navigate = useNavigate();
+    const location = useLocation()
+    const id = location.state?.id ?? '';
 
-    const handlecreatepoint = async(event: React.FormEvent<HTMLFormElement>) => {
+    const handleupdatepoint = async(event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const formData = new FormData();
         formData.append('name', valueNome);
         formData.append('description', valueDescription);
-        formData.append('latitude', valueLatitude);
-        formData.append('longitude', valueLongitude);
 
         if (valueImage) {
             formData.append('image', valueImage);
@@ -37,20 +30,20 @@ const CreatePointPage = () => {
 
         try {
             const token = localStorage.getItem("token")
-            await axios.post("https://inframap-back-end-3zs0.onrender.com/points/createpoint", formData, {
+            await axios.put(`https://inframap-back-end-3zs0.onrender.com/points/update/${id}`, formData, {
                 headers: {
                     'Authorization' : `Bearer ${token}`,
                     'Content-Type' : 'multipart/form-data'
                 }
             });
-            navigate("/home", { state : {lat: valueLatitude, lon: valueLongitude}})   
+            toast.error("Point Atualizado com sucesso!", {icon: <MdError color="#1F3B4D" size={26} />});
+            navigate("/meuspoints")   
         }catch (error) {
             if (axios.isAxiosError(error)){
-                console.log(error)
                 const erroMsg = error.response?.data.error
                 toast.error(erroMsg, {icon: <MdError color="#1F3B4D" size={24} />});
             }else{
-                toast.error("Erro ao fazer login.", {icon: <MdError color="#1F3B4D" size={26} />});
+                toast.error("Erro ao atualizar.", {icon: <MdError color="#1F3B4D" size={26} />});
             }
         }
     }
@@ -60,25 +53,25 @@ const CreatePointPage = () => {
             {/* Componente Navbar */}
             <Navbar showLandingPage={false} showBack={true} />
             
-            <div className='container-createpoint'>
-                <div className="container-form">
+            <div className='container-editpoint'>
+                <div className="container-form-editpoint">
 
                     {/* Mapa */}
-                    <div className='img-mapa-createpoint'>
-                        <p className='title-createpoint'>
-                            Crie seu Point
+                    <div className='img-mapa-editpoint'>
+                        <p className='title-editpoint'>
+                            Atualize seu Point
                         </p>
                         <img src={fotomapa} alt="mapa" width={800}/>
                     </div>
 
                     {/* Form */}
 
-                    <form onSubmit={handlecreatepoint}>
-                        <span className={`tooltip-text ${!lat ? 'hidden' : ""}`}>ℹ️ Essas coordenadas são do local selecionado.</span>
-                        <div className='container-input-createpoint'>
+                    <form onSubmit={handleupdatepoint}>
+                        <span className="tooltip-text">ℹ️ Adicione abaixo as Informações que serão atualizadas.</span>
+                        <div className='container-input-editpoint'>
 
                             {/* Input Name + SVG */}
-                            <label className="input-createpoint">
+                            <label className="input-editpoint">
                                 <input
                                     type="text"
                                     placeholder="Nome do Point"
@@ -122,7 +115,7 @@ const CreatePointPage = () => {
                             </label>
 
                             {/* Input Descrição + SVG */}
-                            <label className="input-createpoint">
+                            <label className="input-editpoint">
                                 <input
                                     type="text"
                                     placeholder="Descrição"
@@ -165,95 +158,7 @@ const CreatePointPage = () => {
                                 </svg>
                             </label>
 
-                            {/* Input Latitude + SVG */}
-                            <label className="input-createpoint">
-                                <input
-                                    type="text"
-                                    placeholder="Latitude"
-                                    minLength={5}
-                                    required
-                                    value={valueLatitude}
-                                    onChange={(e) => setValueLatitude(e.target.value)}
-                                />
-                                <svg
-                                    className="border"
-                                    width="280"
-                                    height="18"
-                                    viewBox="0 0 280 18"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                    className="border-path"
-                                    d="M0,12 L280,12"
-                                    stroke="#C8CCD4"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    />
-                                </svg>
-                                <svg
-                                    className={`check ${valueLatitude.length >= 5 ? 'show' : ''}`}
-                                    width="14"
-                                    height="12"
-                                    viewBox="0 0 14 12"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                    d="M1 7L5.5 11L13 1"
-                                    stroke="#0077FF"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    />
-                                </svg>
-                            </label>
-
-                            {/* Input Longitude + SVG */}
-                            <label className="input-createpoint">
-                                <input
-                                    type="text"
-                                    placeholder="Longitude"
-                                    minLength={5}
-                                    required
-                                    value={valueLongitude}
-                                    onChange={(e) => setValueLongitude(e.target.value)}
-                                />
-                                <svg
-                                    className="border"
-                                    width="280"
-                                    height="18"
-                                    viewBox="0 0 280 18"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                    className="border-path"
-                                    d="M0,12 L280,12"
-                                    stroke="#C8CCD4"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    />
-                                </svg>
-                                <svg
-                                    className={`check ${valueLongitude.length >= 5 ? 'show' : ''}`}
-                                    width="14"
-                                    height="12"
-                                    viewBox="0 0 14 12"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                    d="M1 7L5.5 11L13 1"
-                                    stroke="#0077FF"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    />
-                                </svg>
-                            </label>
-
-                            <label className="input-file-createpoint">
+                            <label className="input-file-editpoint">
                                 Selecione uma imagem do local:
                                 <input
                                     type="file"
@@ -271,7 +176,7 @@ const CreatePointPage = () => {
 
 
                         <div className='container-button'>
-                            <button className='button-createpoint' type='submit'>Enviar</button>
+                            <button className='button-editpoint' type='submit'>Atualizar</button>
                         </div>
                     </form>
                 </div>
@@ -283,4 +188,4 @@ const CreatePointPage = () => {
     )
 }
 
-export default CreatePointPage
+export default EditarPointPage

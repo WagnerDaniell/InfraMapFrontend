@@ -1,7 +1,6 @@
-import "../styles/NavbarMobileStyle.css"
-import "../styles/Global.css"
-import mais from "../assets/mais.png"
-import perfil from "../assets/perfil.png"
+import "./NavbarMobileStyle.css"
+import mais from "../../assets/mais.png"
+import perfil from "../../assets/perfil.png"
 import {useNavigate} from "react-router-dom"
 import type { LatLngTuple } from "leaflet"
 

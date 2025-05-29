@@ -1,7 +1,7 @@
-import logo from "../assets/logoinframap-semf.png"
+import logo from "../../assets/logoinframap-semf.png"
 import {Link, useNavigate} from "react-router-dom"
-import "../styles/NavbarStyle.css"
-import voltar from "../assets/botao-voltar.png"
+import "./NavbarStyle.css"
+import voltar from "../../assets/botao-voltar.png"
 
 type NavbarProps = {
   showLandingPage:boolean;
