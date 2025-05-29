@@ -13,7 +13,7 @@ export default function MapCenterPoint({ onChangeCenter } : MapCenterPointProps)
 
   return (
     <div>
-      <MapContainer center={center} zoom={17} style={{ height: '90vh', width: '100vw', zIndex: 0 }}>
+      <MapContainer center={center} zoom={17} style={{ height: '100vh', width: '100vw', zIndex: 0 }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
