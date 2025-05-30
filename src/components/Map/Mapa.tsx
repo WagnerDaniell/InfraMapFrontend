@@ -32,6 +32,7 @@ const Mapa = ({ busca }: { busca: LatLngTuple }) => {
       try {
         const response = await axios.get("https://inframap-back-end-3zs0.onrender.com/points/allpoints");
         setPoints(response.data);
+        console.log(response)
       } catch (error) {
         navigate("/");
         if (axios.isAxiosError(error)) {
