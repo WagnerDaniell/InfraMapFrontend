@@ -15,7 +15,7 @@ const Navbar = ({showLandingPage, showBack} : NavbarProps) => {
   return(
       <div className='navbar'>
       <div className='navbar-left'>
-        <Link to="/"><img src={logo} alt="logo" height={40} width={40} /></Link>
+        <img src={logo} alt="logo" height={40} width={40} />
       </div>
 
       <div className='navbar-right'>
